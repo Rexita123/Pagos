@@ -48,8 +48,8 @@ $d.addEventListener("click", e => {
                 quantity: 1
             }],
             mode: "subscription",
-            successUrl:"http://127.0.01:5500/assets/success.html",
-            cancelUrl:"http://127.0.01:5500/assets/cancel.html"
+            successUrl:"http://127.0.01:5501/assets/success.html",
+            cancelUrl:"http://127.0.01:5501/assets/cancel.html"
         })
         .then(res => {
             if (res.error){
