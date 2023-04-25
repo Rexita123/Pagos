@@ -1,8 +1,8 @@
 import KEYS from "../assets/Keys.js"
 
 const $d = document;
-const $arepas = $d.getElementById("arepas");
-const $template = $d.getElementById("arepa-template").content;
+const $playeras = $d.getElementById("playeras");
+const $template = $d.getElementById("playera-template").content;
 const $fragment = $d.createDocumentFragment();
 const options = { headers: {Authorization: `Bearer ${KEYS.secret}`}}
 const FormatoDeMoneda = num => `$${num.slice(0, -2)}.${num.slice(-2)}`;
@@ -20,7 +20,7 @@ Promise.all([
     prices.forEach(el => {
         let productData = products.filter(product => product.id === el.product);
         
-        $template.querySelector(".arepa").setAttribute("data-price", el.id);
+        $template.querySelector(".playera").setAttribute("data-price", el.id);
         $template.querySelector("img").src = productData[0].images[0];
         $template.querySelector("img").alt = productData[0].name;
         $template.querySelector("figcaption").innerHTML = `${productData[0].name} ${FormatoDeMoneda(el.unit_amount_decimal)} ${(el.currency).toUpperCase()}`;
@@ -30,16 +30,16 @@ Promise.all([
         $fragment.appendChild($clone);
     });
 
-    $arepas.appendChild($fragment);
+    $playeras.appendChild($fragment);
 })
 .catch(error => {
     let message = error.statuText || "Ocurrió un error en la petición";
 
-    $arepas.innerHTML = `Error: ${error.status}: ${message}`;
+    $playeras.innerHTML = `Error: ${error.status}: ${message}`;
 })
 
 $d.addEventListener("click", e => {
-    if (e.target.matches(".arepas *")) {
+    if (e.target.matches(".playeras *")) {
         let priceId = e.target.parentElement.getAttribute("data-price");
 
         Stripe(KEYS.public).redirectToCheckout({
@@ -53,7 +53,7 @@ $d.addEventListener("click", e => {
         })
         .then(res => {
             if (res.error){
-                $arepas.insertAdjacentElement("afterend", res.error.message)
+                $playeras.insertAdjacentElement("afterend", res.error.message)
             }
         })
     }

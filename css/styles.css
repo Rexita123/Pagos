@@ -22,17 +22,17 @@ span {
   font-weight: bold;
 }
 
-.arepas {
+.playeras {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
 }
 
-.arepas > * {
+.playeras > * {
   flex: 1 1;
 }
 
-.arepa {
+.playera {
   background: transparent;
   text-align: center;
   cursor: pointer;
@@ -42,10 +42,10 @@ span {
   transition: all 0.3s ease-out;
 }
 
-.arepa:hover {
+.playera:hover {
   transform: scale(1.1);
 }
 
-.arepa figcaption {
+.playera figcaption {
   padding: 1em;
 }
